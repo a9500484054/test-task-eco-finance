@@ -15,34 +15,40 @@
             class="btn btn-danger me-2" 
             type="button"
         >Личный кабинет</my-button>
-        <AuthorizedPanel v-if="isAuthorization"></AuthorizedPanel>
+        <AuthorizedPanel v-if="checkAuthorization"></AuthorizedPanel>
     </div>
 </template>
 
 <script>
     import AuthorizedPanel from '@/components/AuthorizedPanel'
-
+    import { mapGetters } from 'vuex';
 
     export default {
         components: {
-            AuthorizedPanel
+            AuthorizedPanel,
+        },
+        computed: {
+            ...mapGetters(['isAuthorized'])
         },
         data() {
             return {
-                isAuthorization: this.getAuthorization(),
+                checkAuthorization: false,
             }
         }, 
+        created() {
+            this.checkAuthorization = this.getAuthorization();
+            console.log(this.checkAuthorization);
+            
+        },
         methods: {
             getAuthorization() {
-                console.log(isAuthorization)
-                return this.$store.getters.isAuthorization
+                return this.$store.getters.isAuthorized
             },
 
         }
 
     }
 </script>
-MyButton
 
 <style lang="scss" scoped>
 

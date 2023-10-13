@@ -1,7 +1,7 @@
 <template>
     <div class="protected-container">
         <h1>Пользователей randomuser.me</h1>
-
+<!-- 
         <div class="card card-body m-5">
             <div class="row">
               <div class="col-md-4 col-xl-3">
@@ -19,7 +19,7 @@
                 Clear LIst </button>
               </div>
             </div>
-        </div>
+        </div> -->
         
         <div class="card card-body m-5">
             <table class="table  table-nowrap">
@@ -48,10 +48,17 @@
                 </tbody>
             </table>
         </div>
-        <div class="">
-            <button @click="loadMore">Загрузить еще</button>
+        <div class="d-flex">
+            <button 
+                @click="loadMore" 
+                class="btn btn-secondary d-flex align-items-center me-1">
+            Add Contact </button>
+            
+            <button 
+                @click="logout"  
+                class="btn btn-danger d-flex align-items-center">
+            Exit </button>
         </div>
-        <button @click="logout" class="logout-btn">Exit</button>
     </div>
 </template>
 
