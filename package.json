@@ -7,10 +7,16 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^1.5.1",
+    "axios-mock-adapter": "^1.22.0",
+    "bootstrap": "^5.3.1",
+    "moment": "^2.29.4",
+    "remixicon": "^3.5.0",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "vuex-typing": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-router": "~5.0.0",
