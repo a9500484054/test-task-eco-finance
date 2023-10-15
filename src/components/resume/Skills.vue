@@ -22,7 +22,7 @@
             <div class="w-75">
               <p class="mb-1">JavaScript</p>
               <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" style="width: 99%"></div>
+                <div class="progress-bar" style="width: 95%"></div>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@
             <div class="w-75">
               <p class="mb-1">TypeScript</p>
               <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" style="width: 80%"></div>
+                <div class="progress-bar" style="width: 70%"></div>
               </div>
             </div>
           </div>

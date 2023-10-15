@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        <p> {{ myVariable }}</p>
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-5">
                 <div class="card mt-4">
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex';
+
 export default {
     name: 'Login',
     data() {
@@ -60,11 +60,9 @@ export default {
             email: '',
             password: '',
             error: '',
-           
         };
     },
     methods: {
-        ...mapMutations(['setAuthorization']),
         async login() {
             // Проверьте введенные данные
             console.log(this.email)
@@ -80,7 +78,7 @@ export default {
                     // Сохраните полученные данные в хранилище или передайте их в другой компонент
                     // this.$store.commit('setUsers', data.results);
                     // Перенаправьте пользователя на защищенную страницу
-                    this.updateAuthorization(true)
+                    this.updateVariable()
                     this.$router.push('/protected');
                 } catch (err) {
                     console.error('Ошибка при получении списка пользователей', err);
@@ -90,10 +88,9 @@ export default {
                 this.error = 'Неверные имя пользователя или пароль.';
             }
         },
- 
-        updateAuthorization(isAuthorized) {
-            this.setAuthorization(isAuthorized);
-        }
+        updateVariable() {
+            this.$store.dispatch('updateVariableAuthorization', true);
+        },
     },
 };
 </script>

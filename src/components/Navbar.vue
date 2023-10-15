@@ -21,32 +21,16 @@
 
 <script>
     import AuthorizedPanel from '@/components/AuthorizedPanel'
-    import { mapGetters } from 'vuex';
 
     export default {
         components: {
             AuthorizedPanel,
         },
         computed: {
-            ...mapGetters(['isAuthorized'])
-        },
-        data() {
-            return {
-                checkAuthorization: false,
-            }
-        }, 
-        created() {
-            this.checkAuthorization = this.getAuthorization();
-            console.log(this.checkAuthorization);
-            
-        },
-        methods: {
-            getAuthorization() {
-                return this.$store.getters.isAuthorized
+            checkAuthorization() {
+                return this.$store.state.isAuthorization;
             },
-
-        }
-
+        },
     }
 </script>
 

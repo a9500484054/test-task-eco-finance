@@ -6,20 +6,29 @@
         <div class="d-flex align-items-center">
             <div class="user-panel__name me-1">User authorized</div>
             <my-button
+                @click="logout"
                 class="btn text-danger"
-            >
-                <i class="ri-logout-box-line"></i>
+            ><i class="ri-logout-box-line"></i>
             </my-button>
         </div>
     </div>
 </template>
 
 <script>
-    import AuthorizedPanel from '@/components/AuthorizedPanel'
+
     export default {
         components: {
-            AuthorizedPanel
-        }, 
+        },
+        methods: {
+            logout() {
+                this.updateVariable();
+                window.localStorage.removeItem('token')
+                this.$router.push('/');
+            },
+            updateVariable() {
+                this.$store.dispatch('updateVariableAuthorization', false);
+            },
+        }
     }
 </script>
 

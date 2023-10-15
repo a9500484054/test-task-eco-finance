@@ -45,12 +45,14 @@ export default createStore({
             commit('SET_LOADING', false);
         });
     },
+    updateVariableAuthorization({ commit }, newValue) {
+      commit('setAuthorization', newValue);
+    },
   },
   
   getters: {
     getUsers: state => state.users,
     isLoading: state => state.isLoading,
-    isAuthorization: state => state.isAuthorization
   },
   modules: {
    
