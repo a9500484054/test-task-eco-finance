@@ -11,17 +11,8 @@
         components: {
             Login
         },  
-        data() {
-            return {
-                userName: "",
-                password: ""
-            }
-        },
-        methods: {
-            
-        },
-       
-    }
+
+}
 </script>
 
 <style lang="scss" scoped>

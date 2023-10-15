@@ -41,16 +41,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #b2afaf;
         border-radius: 50px;
         width: 2em;
         height: 2em;
         font-size: 1em;
-    }
-    &__wrapper {
-
-    }
-    &__name {
+        background: #87bb50;
 
     }
     &__role {
@@ -66,6 +61,5 @@
         border-radius: 4px;
         background-color: rgba(83,155,255 ,1);
     }
-
 }
 </style>

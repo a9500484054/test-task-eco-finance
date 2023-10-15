@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <PublicPage></PublicPage>
-    </div>
+    <PublicPage></PublicPage>
 </template>
 
 <script>

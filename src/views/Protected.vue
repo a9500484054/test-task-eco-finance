@@ -1,6 +1,5 @@
 <template>
-    <div class="protected-container">
-        <h1>Пользователей randomuser.me</h1>
+    <div class="protected-container mb-5">
 <!-- 
         <div class="card card-body m-5">
             <div class="row">
@@ -21,24 +20,15 @@
             </div>
         </div> -->
         
-        <div class="card card-body m-5">
-            <table class="table  table-nowrap">
+        <div class="card card-body my-5">
+            <table class="table table-nowrap">
                 <thead>
                     <tr>
-                        <td>
-                            <div class="n-chk align-self-center text-center">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input contact-chkbox primary" id="checkbox1">
-                                    <label class="form-check-label" for="checkbox1"></label>
-                                </div>
-                            </div>
-                        </td>
                         <th>User</th>   
                         <th>DOB</th>
                         <th>Email</th>
                         <th>Location</th>
                         <th>Phone</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,51 +41,53 @@
         <div class="d-flex">
             <button 
                 @click="loadMore" 
-                class="btn btn-secondary d-flex align-items-center me-1">
+                class="btn btn-secondary btn-green">
             Add Contact </button>
-            
-            <button 
-                @click="logout"  
-                class="btn btn-danger d-flex align-items-center">
-            Exit </button>
         </div>
     </div>
 </template>
 
 <script>
-    import ItemCard from '@/components/ItemCard.vue'
+import ItemCard from '@/components/ItemCard.vue'
 
 export default {
-    name: 'Protected',
+    mounted() {
+        this.checkUser();
+    },
     data() {
         return {
-            users: this.loadUsers(),
+            users: this.$store.state.users,
         };
     },
-    mounted() {
-        this.$store.dispatch('fetchUsers');
-        // this.loadUsers();
-    },
-    methods: {
 
+    methods: {
         loadUsers() {
-            return this.$store.getters.getUsers;
+            return this.$store.state.users;
+        },
+        getUser() {
+            this.$store.dispatch('fetchUsers');
+        },
+        checkUser() {
+            if( this.users.length === 0) {
+                this.users = this.$store.dispatch('fetchUsers');
+            } 
         },
         loadMore() {
-            this.users = this.loadUsers();
             this.$store.dispatch('loadMore');
+            this.users = this.$store.state.users
         },
         logout() {
+            this.updateVariable();
             window.localStorage.removeItem('token')
             this.$router.push('/');
         },
-
-
-        
-},
-components: {
-    ItemCard,
-},
+        updateVariable() {
+            this.$store.dispatch('updateVariableAuthorization', false);
+        },
+    },
+    components: {
+        ItemCard,
+    },
 };
 </script>
 
@@ -118,4 +110,12 @@ components: {
     border: none;
     box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px,rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
   }
+
+  .btn-green {
+    background: #87bb50;
+    border: none;
+    &:hover {
+        background: #87bb50e1;
+    }
+}
 </style>

@@ -7,8 +7,7 @@
 
                     <div class="card-body p-4">
                         <div class="text-center mt-2">
-                            <h5 class="text-primary">Create New Account</h5>
-                            <p class="text-muted">Get your free velzon account now</p>
+                            <h5 class="">User authorization</h5>
                         </div>
                         <div class="p-2 mt-4">
 
@@ -35,7 +34,7 @@
                                 <div class="mt-4">
                                     <my-button
                                         @click="login"
-                                        class="btn btn-danger me-2 w-100" 
+                                        class="btn btn-danger me-2 w-100 btn-green"
                                         type="button"
                                     >Enter</my-button>
                                 </div>
@@ -65,8 +64,6 @@ export default {
     methods: {
         async login() {
             // Проверьте введенные данные
-            console.log(this.email)
-            console.log(this.password)
             if (this.email === 'admin@example.com' && this.password === 'Qwerty12345') {
                 try {
                     // Выполните запрос на сервер для получения списка пользователей
@@ -75,9 +72,6 @@ export default {
                     const data = await response.json();
 
                     localStorage.setItem('token', 'z42Kk4?Ii!sEUVd5p/CiIWIZmer-cl33DCG-Pi/OlJtrmrNontWb!XXLrWclsY1L');
-                    // Сохраните полученные данные в хранилище или передайте их в другой компонент
-                    // this.$store.commit('setUsers', data.results);
-                    // Перенаправьте пользователя на защищенную страницу
                     this.updateVariable()
                     this.$router.push('/protected');
                 } catch (err) {
@@ -96,5 +90,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .btn-green {
+        background: #87bb50;
+        border: none;
+        &:hover {
+            background: #87bb50e1;
+        }
+    }
 </style>

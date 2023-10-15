@@ -1,20 +1,15 @@
 <template>
     <div class="navbar">
-        <my-button
-            @click="$router.push('/')"
-            class="btn btn-danger me-2" 
-            type="button"
-        >На главную</my-button>
-        <my-button
-            @click="$router.push('/public')"
-            class="btn btn-danger me-2" 
-            type="button"
-        >Резюме</my-button>
-        <my-button
-            @click="$router.push('/protected')"
-            class="btn btn-danger me-2" 
-            type="button"
-        >Личный кабинет</my-button>
+        <div>
+            <router-link v-if="!checkAuthorization" class="me-2 navbar__link" to="/">authorization </router-link>
+            <router-link class="me-2 navbar__link" to="/public">Summary</router-link>
+            <router-link
+                class="me-2 navbar__link"
+                v-if="checkAuthorization"
+                to="/protected"
+            >User list</router-link>
+        </div>
+        <div v-if="!checkAuthorization">unauthorized user</div>
         <AuthorizedPanel v-if="checkAuthorization"></AuthorizedPanel>
     </div>
 </template>
@@ -36,10 +31,20 @@
 
 <style lang="scss" scoped>
 
-.navbar {
+    .navbar {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
+        border-bottom: 1px solid #2F2F2F;
+        height: 60px;
+        &__link {
+            font-size: 20px;
+            color: #2F2F2F;
+            text-decoration: none;
+            &:hover {
+                opacity: .6;
+            }
+        }
     }
 
 

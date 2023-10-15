@@ -1,8 +1,7 @@
 <template>
-  <navbar></navbar>
-  <div class="app">
+  <div class="main">
+    <navbar></navbar>
     <router-view></router-view>
-    <!-- <Item-card></Item-card> -->
   </div>
 </template>
 
@@ -18,5 +17,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+  .main {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 </style>

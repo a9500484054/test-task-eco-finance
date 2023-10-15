@@ -14,6 +14,5 @@ const app = createApp(App);
 components.forEach(component => {
     app.component(component.name, component)
 })
-console.log(components);
 
 app.use(store).use(router).mount('#app')
