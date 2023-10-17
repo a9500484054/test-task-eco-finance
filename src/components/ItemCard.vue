@@ -1,5 +1,13 @@
 <template>
-    <tr class="search-items">
+    <tr class="search-items" @click="selectItem">
+        <td>
+            <div class="n-chk align-self-center text-center">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input contact-chkbox primary" :id="user.email">
+                    <label class="form-check-label" :for="user.email"></label>
+                </div>
+            </div>
+        </td>
         <td>
             <div class="d-flex align-items-center">
                 <img :src="user.picture.medium" alt="avatar" class="rounded-circle" width="35">
@@ -56,7 +64,19 @@ export default {
             },
             deleteItem() {
                 this.$store.dispatch('removeUser', this.user);
-                console.log()
+            },
+            selectItem(event) {
+                if(!event.target.closest('.btn') && !event.target.closest('.form-check-input') ) {
+                    // Получаем элемент флажка, используя его ID
+                    const checkbox = document.getElementById(this.user.email);
+                    // // Проверяем, установлен ли флажок или снят
+                    const isChecked = checkbox.checked;
+                    
+                    // // Меняем состояние флажка
+                    checkbox.checked = !isChecked;
+                }
+
+                
             }
         }
     }

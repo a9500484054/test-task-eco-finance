@@ -1,6 +1,6 @@
 <template>
     <div class="protected-container mb-5">
-<!-- 
+    <!-- 
         <div class="card card-body m-5">
             <div class="row">
               <div class="col-md-4 col-xl-3">
@@ -24,6 +24,15 @@
             <table class="table table-nowrap">
                 <thead>
                     <tr>
+                        <th>
+                            <div class="n-chk align-self-center text-center">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input primary" id="contact-check-all">
+                                    <label class="form-check-label" for="contact-check-all"></label>
+                                    <span class="new-control-indicator"></span>
+                                </div>
+                            </div>
+                        </th>
                         <th>User</th>   
                         <th>DOB</th>
                         <th>Email</th>
