@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     <transition-group name="user-list">
-                        <ItemCard v-for="user in users" :key="user.id" :user="user" />
+                        <ItemCard v-for="user in this.$store.state.users" :key="user.id" :user="user" />
                     </transition-group>
                 </tbody>
             </table>
@@ -68,13 +68,12 @@ export default {
             this.$store.dispatch('fetchUsers');
         },
         checkUser() {
-            if( this.users.length === 0) {
-                this.users = this.$store.dispatch('fetchUsers');
+            if(this.users.length === 0) {
+                this.$store.dispatch('fetchUsers');
             } 
         },
         loadMore() {
             this.$store.dispatch('loadMore');
-            this.users = this.$store.state.users
         },
         logout() {
             this.updateVariable();
