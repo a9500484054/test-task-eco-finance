@@ -27,14 +27,22 @@
         <td>
             <span><i class="ri-phone-line  me-1"></i> {{ user.phone }}</span>
         </td>
+        <td>
+            <my-button
+                @click="deleteItem"
+                class="btn btn-danger"
+            >Удалить</my-button>
+        </td>
     </tr>
 
 </template>
 
 <script>
 import moment from 'moment'
+import MyButton from './UI/MyButton.vue'
 
 export default {
+  components: { MyButton },
         props: ['user'],
         data() {
             return {
@@ -45,6 +53,9 @@ export default {
             checkGender(gender) {
                 return gender === "male" ? '<i class="ri-men-line me-1"></i>' : `<i class="ri-women-line me-1"></i>`
             },
+            deleteItem() {
+                this.$store.dispatch('removeUser', this.user);
+            }
         }
     }
 </script>

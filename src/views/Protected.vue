@@ -29,11 +29,16 @@
                         <th>Email</th>
                         <th>Location</th>
                         <th>Phone</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <transition-group name="user-list">
-                        <ItemCard v-for="user in this.$store.state.users" :key="user.id" :user="user" />
+                        <ItemCard 
+                            v-for="user in this.$store.state.users"
+                            :key="user.email"
+                            :user="user" 
+                        />
                     </transition-group>
                 </tbody>
             </table>
@@ -83,6 +88,9 @@ export default {
         updateVariable() {
             this.$store.dispatch('updateVariableAuthorization', false);
         },
+        removeItem() {
+
+        }
     },
     components: {
         ItemCard,

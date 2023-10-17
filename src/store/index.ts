@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default createStore({
   state: {
-    users: [],
+    users: [] as { email: string }[],
     isLoading: false,
     isAuthorization: false, 
   },
@@ -13,6 +13,13 @@ export default createStore({
     },  
     setAuthorization(state, isAuthorization) {
       state.isAuthorization = isAuthorization;
+    },
+    REMOVE_USER(state, user) {
+      const index = state.users.findIndex(el => el.email === user.email);
+      if (index !== -1) {
+        state.users.splice(index, 1);
+      }
+      
     }
   },
   actions: {
@@ -20,6 +27,7 @@ export default createStore({
       await axios
         .get('https://randomuser.me/api/?results=5')
         .then(response => {
+          console.log(response.data.results);
           commit('setUser', response.data.results);
         })
         .catch(error => {
@@ -40,10 +48,15 @@ export default createStore({
     updateVariableAuthorization({ commit }, newValue) {
       commit('setAuthorization', newValue);
     },
+    removeUser({ commit }, user) {
+      commit('REMOVE_USER', user); // Вызываем мутацию для удаления пользователя
+    }
+    
   },
   
   getters: {
     getUsers: state => state.users,
+
   },
   modules: {
    
