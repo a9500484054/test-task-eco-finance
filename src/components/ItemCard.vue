@@ -31,7 +31,8 @@
             <my-button
                 @click="deleteItem"
                 class="btn btn-danger"
-            >Удалить</my-button>
+            ><i class="ri-delete-bin-line"></i>
+        </my-button>
         </td>
     </tr>
 
@@ -55,6 +56,7 @@ export default {
             },
             deleteItem() {
                 this.$store.dispatch('removeUser', this.user);
+                console.log()
             }
         }
     }

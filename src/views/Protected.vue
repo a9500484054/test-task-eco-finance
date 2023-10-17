@@ -40,6 +40,9 @@
                             :user="user" 
                         />
                     </transition-group>
+                    <tr v-if="checkItem()">
+                        <td colspan="6" class="text-center">Список пуст</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -88,8 +91,8 @@ export default {
         updateVariable() {
             this.$store.dispatch('updateVariableAuthorization', false);
         },
-        removeItem() {
-
+        checkItem() {
+            return this.$store.state.users.length === 0 ? true : false;
         }
     },
     components: {
